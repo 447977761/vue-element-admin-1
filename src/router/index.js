@@ -77,15 +77,29 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/documentation',
+    path: '/SubjectKnowledgeBase',
     component: Layout,
-    redirect: '/documentation/index',
+    redirect: '/SubjectKnowledgeBase/querySubject',
+    name: 'Subject',
+    meta: { title: '题目知识库', icon: 'table' },
     children: [
       {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'documentation', icon: 'documentation', noCache: true }
+        path: 'querySubject',
+        name: 'QuerySubject',
+        component: () => import('@/views/querySubject/index'),
+        meta: { title: '知识库信息列表' }
+      },
+      {
+        path: 'subjectAdd',
+        name: 'subjectAdd',
+        component: () => import('@/views/subjectAdd/index'),
+        meta: { title: '入库题目' }
+      },
+      {
+        path: 'subjectStatistics',
+        name: 'SubjectStatistics',
+        component: () => import('@/views/subjectStatistics/index'),
+        meta: { title: '知识库统计' }
       }
     ]
   },
@@ -233,20 +247,6 @@ export const asyncRouterMap = [
   },
 
   {
-    path: '/error-log',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'log',
-        component: () => import('@/views/errorLog/index'),
-        name: 'ErrorLog',
-        meta: { title: 'errorLog', icon: 'bug' }
-      }
-    ]
-  },
-
-  {
     path: '/excel',
     component: Layout,
     redirect: '/excel/export-excel',
@@ -312,21 +312,6 @@ export const asyncRouterMap = [
     component: () => import('@/views/pdf/download'),
     hidden: true
   },
-
-  {
-    path: '/theme',
-    component: Layout,
-    redirect: 'noredirect',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/theme/index'),
-        name: 'Theme',
-        meta: { title: 'theme', icon: 'theme' }
-      }
-    ]
-  },
-
   {
     path: '/clipboard',
     component: Layout,
@@ -340,30 +325,5 @@ export const asyncRouterMap = [
       }
     ]
   },
-
-  {
-    path: '/i18n',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/i18n-demo/index'),
-        name: 'I18n',
-        meta: { title: 'i18n', icon: 'international' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://github.com/PanJiaChen/vue-element-admin',
-        meta: { title: 'externalLink', icon: 'link' }
-      }
-    ]
-  },
-
   { path: '*', redirect: '/404', hidden: true }
 ]

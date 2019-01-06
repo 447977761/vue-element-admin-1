@@ -9,8 +9,13 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    proxyTable: {
+      /**
+       * npm代理，解决调试接口中，跨域问题
+       * */
+      '/mathSubject/**':'http://localhost:8090',
+      '/test/testWordProcess/**':'http://localhost:8090'
+    },
     // Various Dev Server settings
 
     // can be overwritten by process.env.HOST
